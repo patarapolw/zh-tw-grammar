@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { DefaultTheme, defineConfig } from "vitepress";
 
-const ROOT= 'posts'
+const ROOT = "posts";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -10,6 +10,7 @@ export default defineConfig({
   description:
     "Chinese grammar from a textbook, converted and filled to traditional Chinese with AI",
   lang: "zh-TW",
+  base: "/zh-tw-grammar/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     // nav: [
