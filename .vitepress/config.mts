@@ -11,6 +11,7 @@ export default defineConfig({
     "Chinese grammar from a textbook, converted and filled to traditional Chinese with AI",
   lang: "zh-TW",
   base: "/zh-tw-grammar/",
+  lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     // nav: [
@@ -23,6 +24,16 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/patarapolw/zh-tw-grammar" },
     ],
+    // search: {
+    //   provider: "local",
+    //   options: {
+    //     miniSearch: {
+    //       options: {
+    //         tokenize
+    //       }
+    //     }
+    //   }
+    // },
   },
 });
 
@@ -43,7 +54,8 @@ function makeSidebar(root = ROOT): DefaultTheme.Sidebar {
 
         return {
           text: i ? `(${i}) ${s}` : base2,
-          link: [root, f1, base2].join("/"),
+          base: `/${root}/`,
+          link: [f1, base2].join("/"),
         };
       })
       .filter((o) => {
@@ -60,6 +72,7 @@ function makeSidebar(root = ROOT): DefaultTheme.Sidebar {
 
     return {
       text: i ? `${i}. ${s}` : base1,
+      base: `/${root}/`,
       link: indexLink,
       items: ls2,
     };

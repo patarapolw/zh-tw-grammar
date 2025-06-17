@@ -1,7 +1,5 @@
 ---
 title: 第一章 导语
-date: 2025-06-17T15:10:00+07:00
-lang: zh-TW
 ---
 
 <details>
