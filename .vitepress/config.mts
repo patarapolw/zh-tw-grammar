@@ -8,7 +8,7 @@ const ROOT = "posts";
 export default defineConfig({
   title: "漢語語法",
   description:
-    "Chinese grammar from a textbook, converted and filled to traditional Chinese with AI",
+    "繁體中文漢語語法網站，內容改寫自教科書並經 AI 擴充，包含語法解說、例句翻譯、練習測驗與台灣常用語法參考。",
   lang: "zh-TW",
   base: "/zh-tw-grammar/",
   lastUpdated: true,
