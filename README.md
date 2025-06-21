@@ -5,10 +5,11 @@ Chinese grammar from a textbook, converted and filled to traditional Chinese wit
 Using a prompt like this, into [ChatGPT](https://chat.openai.com/) or similar. (Then refine contents in the same AI chat,)
 
 ```
-Make a quiz from this in traditional Chinese only. Put explanation for each sections, followed by quiz in each section. quizzes have answer key just before ending the section, but after all of the quizzes in the section.
-Every section has a translation into Chinese quiz as a part, in addition to grammar understanding.
+Make a quiz from this in traditional Chinese only.
+Put explanation for each sections, followed by quiz in each section.
+Quizzes have answer key just before ending the section.
 Each section has links to online references in traditional Chinese, like Taiwanese Mandarin.
-Add direct links to grammar points in each section. make sure the links are not dead.
+Add direct links to grammar points in each section. Make sure the links are not dead.
 
 [Manually typed markdown contents]
 ```
