@@ -75,6 +75,7 @@ function makeSidebar(root = ROOT): DefaultTheme.Sidebar {
       base: `/${root}/`,
       link: indexLink,
       items: ls2,
+      collapsed: true,
     };
   });
 }
