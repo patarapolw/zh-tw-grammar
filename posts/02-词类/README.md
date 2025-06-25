@@ -4,7 +4,7 @@ title: 第二章 词类
 
 <Collapse>
 
-# 第二章 词类
+# 第二章 词类 {.ignore-header}
 
 ## (1) 词
 

@@ -1,7 +1,7 @@
 <template>
   <details>
     <summary>Original text</summary>
-    <blockquote>
+    <blockquote lang="zh-CN">
       <slot />
     </blockquote>
   </details>
