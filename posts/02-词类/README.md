@@ -1,5 +1,5 @@
 ---
-title: 第二章 词类
+title: 第二章 詞類
 ---
 
 <Collapse>
