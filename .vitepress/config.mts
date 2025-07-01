@@ -39,42 +39,47 @@ export default defineConfig({
 
 function makeSidebar(root = ROOT): DefaultTheme.Sidebar {
   return fs.readdirSync(root).map((f1) => {
-    const base1 = f1.replace(/\.md$/, "");
-    const [n, s] = base1.split("-", 2);
-
     const p1 = path.join(root, f1);
+    const base = `/${root}/`;
 
     let indexLink: string | undefined = undefined;
-    const ls2 = fs
-      .readdirSync(p1)
-      .map((f2) => {
-        const base2 = f2.replace(/\.md$/, "");
-        const [n, s] = base2.split("-", 2);
-        const i = Number(n);
 
-        return {
-          text: i ? `(${i}) ${s}` : base2,
-          base: `/${root}/`,
-          link: [f1, base2].join("/"),
-        };
-      })
-      .filter((o) => {
-        if (o.text === "README") {
-          indexLink = o.link;
-          return false;
-        }
-        return true;
-      });
+    const ls: DefaultTheme.SidebarItem[] = [];
+    let prev: DefaultTheme.SidebarItem | null = null;
+
+    for (const f2 of fs.readdirSync(p1)) {
+      const stem = f2.replace(/\.md$/, "");
+      const link = [f1, stem].join("/");
+      if (stem === "README") {
+        indexLink = link;
+        continue;
+      }
+
+      const [n, s] = stem.replace(/\(/g, " (").trimStart().split("-", 2);
+      const i = Number(n);
+      const text = i ? `(${i}) ${s}` : stem;
+
+      if (n.includes(".") && prev) {
+        prev.items = prev.items || [];
+        prev.items.push({ text, base, link });
+      } else {
+        prev = { text, base, link, collapsed: true };
+        ls.push(prev);
+      }
+    }
 
     console.log(indexLink);
 
+    const stem = f1.replace(/\.md$/, "");
+    const [n, s] = stem.split("-", 2);
     const i = Number(n);
+    const text = i ? `${i}. ${s}` : stem;
 
     return {
-      text: i ? `${i}. ${s}` : base1,
-      base: `/${root}/`,
+      text,
+      base,
       link: indexLink,
-      items: ls2,
+      items: ls,
       collapsed: true,
     };
   });
