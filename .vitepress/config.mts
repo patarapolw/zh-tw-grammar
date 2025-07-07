@@ -45,7 +45,8 @@ function makeSidebar(root = ROOT): DefaultTheme.Sidebar {
     let indexLink: string | undefined = undefined;
 
     const ls: DefaultTheme.SidebarItem[] = [];
-    let prev: DefaultTheme.SidebarItem | null = null;
+
+    const sectMap = new Map<number, DefaultTheme.SidebarItem>();
 
     for (const f2 of fs.readdirSync(p1)) {
       const stem = f2.replace(/\.md$/, "");
@@ -59,12 +60,24 @@ function makeSidebar(root = ROOT): DefaultTheme.Sidebar {
       const i = Number(n);
       const text = i ? `(${i}) ${s}` : stem;
 
+      const iFloor = i ? Math.floor(i) : null;
+      const prev = iFloor ? sectMap.get(iFloor) : null;
+
       if (n.includes(".") && prev) {
         prev.items = prev.items || [];
         prev.items.push({ text, base, link });
       } else {
-        prev = { text, base, link, collapsed: true };
-        ls.push(prev);
+        const it: DefaultTheme.SidebarItem = {
+          text,
+          base,
+          link,
+          collapsed: true,
+        };
+        ls.push(it);
+
+        if (iFloor) {
+          sectMap.set(iFloor, it);
+        }
       }
     }
 
