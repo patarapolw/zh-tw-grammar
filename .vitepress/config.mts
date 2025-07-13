@@ -34,6 +34,15 @@ export default defineConfig({
     //     }
     //   }
     // },
+
+    lastUpdated: {
+      text: "最後更新",
+      formatOptions: {
+        dateStyle: "long",
+        timeStyle: "short",
+        forceLocale: true,
+      },
+    },
   },
 });
 
